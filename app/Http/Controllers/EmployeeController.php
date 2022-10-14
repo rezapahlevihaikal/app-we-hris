@@ -120,7 +120,7 @@ class EmployeeController extends Controller {
                         }
                         $name  = '<span><a href="employees/' . $row->id .'" class="d-block text-bold" style="color:#24ABF2">'.$row->full_name.'</a></span>';
                         $username = "<span>Username: &nbsp;".($row->user->username ?? '')."</span>";
-                        $gender= "<span>Gender: &nbsp;".($row->gender ?? '')."</span>";
+                        $gender= "<span>Gender: &nbsp;".($row->gender ?? '')."</span>"; 
                         $stt = "<span>Status: &nbsp;".($row->status->status_title ?? '')."</span>"; 
                         //if(config('variable.currency_format') =='suffix'){
 						//	$salary= "<span>Salary: &nbsp;".($row->basic_salary ?? '')." ".config('variable.currency')."</span>";
