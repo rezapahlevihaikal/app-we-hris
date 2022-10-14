@@ -51,17 +51,18 @@ class EmployeeController extends Controller {
             if (request()->ajax())
             {
                 if ($request->company_id && $request->department_id && $request->designation_id && $request->office_shift_id){
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('department_id','=',$request->department_id)
                                 ->where('designation_id','=',$request->designation_id)
                                 ->where('office_shift_id','=',$request->office_shift_id)
+								->where('status_id','=',$request->status_id)
                                 ->where('is_active',1)
                                 ->where('exit_date',NULL)
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->department_id && $request->designation_id) {
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('department_id','=',$request->department_id)
                                 ->where('designation_id','=',$request->designation_id)
@@ -70,7 +71,7 @@ class EmployeeController extends Controller {
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->department_id) {
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('department_id','=',$request->department_id)
                                 ->where('is_active',1)
@@ -78,7 +79,7 @@ class EmployeeController extends Controller {
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->office_shift_id) {
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('office_shift_id','=',$request->office_shift_id)
                                 ->where('is_active',1)
@@ -86,14 +87,14 @@ class EmployeeController extends Controller {
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id) {
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('is_active',1)
                                 ->where('exit_date',NULL)
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }else {
-                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name')
+                    $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->orderBy('company_id')
                                 ->where('is_active',1)
                                 ->where('exit_date',NULL)
@@ -120,18 +121,18 @@ class EmployeeController extends Controller {
                         $name  = '<span><a href="employees/' . $row->id .'" class="d-block text-bold" style="color:#24ABF2">'.$row->full_name.'</a></span>';
                         $username = "<span>Username: &nbsp;".($row->user->username ?? '')."</span>";
                         $gender= "<span>Gender: &nbsp;".($row->gender ?? '')."</span>";
-                        $shift = "<span>Shift: &nbsp;".($row->officeShift->shift_name ?? '')."</span>";
-                        if(config('variable.currency_format') =='suffix'){
-							$salary= "<span>Salary: &nbsp;".($row->basic_salary ?? '')." ".config('variable.currency')."</span>";
-						}else{
-							$salary= "<span>Salary: &nbsp;".config('variable.currency')." ".($row->basic_salary ?? '')."</span>";
-						}
-                        $payslip_type = "<span>Payslip Type: &nbsp;".($row->payslip_type ?? '')."</span>";
+                        $stt = "<span>Status: &nbsp;".($row->status->status_title ?? '')."</span>";
+                        //if(config('variable.currency_format') =='suffix'){
+						//	$salary= "<span>Salary: &nbsp;".($row->basic_salary ?? '')." ".config('variable.currency')."</span>";
+						////}else{
+						//	$salary= "<span>Salary: &nbsp;".config('variable.currency')." ".($row->basic_salary ?? '')."</span>";
+						//}
+                        $marital_stt = "<span>Marital Status: &nbsp;".($row->marital_status ?? '')."</span>";
 
                         return "<div class='d-flex'>
                                         <div class='mr-2'>".$profile_photo."</div>
                                         <div>"
-                                            .$name.'</br>'.$username.'</br>'.$gender.'</br>'.$shift.'</br>'.$salary.'</br>'.$payslip_type;
+                                            .$name.'</br>'.$username.'</br>'.$gender.'</br>'.$stt.'</br>'.$marital_stt.'</br>';
                                         "</div>
                                     </div>";
                     })
@@ -147,10 +148,10 @@ class EmployeeController extends Controller {
                     {
                         $email = "<i class='fa fa-envelope text-muted' title='Email'></i>&nbsp;".$row->email;
                         $contact_no = "<i class='text-muted fa fa-phone' title='Phone'></i>&nbsp;".$row->contact_no;
-                        $skype_id = "<i class='text-muted fa fa-skype' title='Skype'></i>&nbsp;".$row->skype_id;
+                       // $skype_id = "<i class='text-muted fa fa-skype' title='Skype'></i>&nbsp;".$row->skype_id;
                         $whatsapp_id = "<i class='text-muted fa fa-whatsapp' title='Whats App'></i>&nbsp;".$row->whatsapp_id;
 
-                        return $email.'</br>'.$contact_no.'</br>'.$skype_id.'</br>'.$whatsapp_id;
+                        return $email.'</br>'.$contact_no.'</br>'.$whatsapp_id.' </br>';
                     })
                     ->addColumn('action', function ($data)
                     {
