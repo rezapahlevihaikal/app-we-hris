@@ -278,6 +278,10 @@
 
                             {{-- <div class="col-md-6 form-group"  id="ipField"></div> --}}
 
+                            <div class="col-md-6 form-group">
+                                <label class="text-bold">{{__('Finish Contract')}} <span class="text-danger">*</span></label>
+                                <input type="text" name="finish_contract" id="finish_contract" class="form-control date">
+                            </div>
 
                             <div class="container">
                                 <div class="form-group" align="center">

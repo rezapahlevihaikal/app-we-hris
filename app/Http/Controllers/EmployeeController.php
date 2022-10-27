@@ -193,7 +193,7 @@ class EmployeeController extends Controller {
 			if (request()->ajax())
 			{
 				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'contact_no', 'date_of_birth', 'gender',
-					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date'),
+					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date', 'finish_contract'),
 					[
 						'first_name' => 'required',
 						'last_name' => 'required',
@@ -209,6 +209,7 @@ class EmployeeController extends Controller {
 						'office_shift_id' => 'required',
 						'attendance_type' => 'required',
 						'joining_date' => 'required',
+						'finish_contract' => 'required',
 						'profile_photo' => 'nullable|image|max:10240|mimes:jpeg,png,jpg,gif',
 					]
 				);
@@ -233,6 +234,7 @@ class EmployeeController extends Controller {
 				$data['contact_no'] = $request->contact_no;
 				$data['attendance_type'] = $request->attendance_type; //new
 				$data['joining_date']    = $request->joining_date; //new
+				$data['finish_contract'] = $request->finish_contract;
 				$data['is_active'] = 1;
 
 
@@ -432,6 +434,7 @@ class EmployeeController extends Controller {
 						'total_leave' => 'numeric|min:0',
 						'joining_date' => 'required',
 						'exit_date' => 'nullable',
+						'finish_contract' => 'nullable'
 					]
 				);
 
@@ -459,6 +462,9 @@ class EmployeeController extends Controller {
 
 				if ($request->exit_date){
 					$data['exit_date'] = $request->exit_date;
+				}
+				if ($request->finish_contract) {
+					$data['finish_contract'] = $request->finish_contract;
 				}
                 // else {
                 //     $data['exit_date'] = NULL;

@@ -370,6 +370,14 @@
                                                                value="{{$employee->exit_date}}">
                                                     </div>
 
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{__('Finish Contract')}}</label>
+                                                        <input type="text" name="finish_contract" id="exit_date"
+                                                            class="form-control date"
+                                                               value="{{$employee->finish_contract}}">
+                                                    </div>
+
+
                                                     <div class="col-md-4">
                                                         <label class="text-bold">{{__('Attendance Type')}} <span class="text-danger">*</span></label>
                                                         <select name="attendance_type" id="attendance_type" required class="selectpicker form-control"
