@@ -74,7 +74,7 @@
                                        class="form-control date" value="">
                             </div>
 
-                            <div class="col-md-6 form-group">
+                            {{-- <div class="col-md-6 form-group">
                                 <label>{{trans('file.Language')}}</label>
                                 <select name="language_skill_id" id="language_skill_id" required
                                         class="form-control selectpicker"
@@ -84,9 +84,9 @@
                                         <option value="{{$language_skill->id}}">{{$language_skill->name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-6 form-group">
+                            {{-- <div class="col-md-6 form-group">
                                 <label>{{__('Professional Skills')}}</label>
                                 <select name="general_skill_id" id="general_skill_id" required
                                         class="form-control selectpicker"
@@ -96,7 +96,7 @@
                                         <option value="{{$general_skill->id}}">{{$general_skill->name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
 
                             <div class="col-md-6">

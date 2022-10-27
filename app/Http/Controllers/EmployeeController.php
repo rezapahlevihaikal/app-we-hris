@@ -58,7 +58,7 @@ class EmployeeController extends Controller {
                                 ->where('office_shift_id','=',$request->office_shift_id)
 								->where('status_id','=',$request->status_id)
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->department_id && $request->designation_id) {
@@ -67,7 +67,7 @@ class EmployeeController extends Controller {
                                 ->where('department_id','=',$request->department_id)
                                 ->where('designation_id','=',$request->designation_id)
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->department_id) {
@@ -75,7 +75,7 @@ class EmployeeController extends Controller {
                                 ->where('company_id','=',$request->company_id)
                                 ->where('department_id','=',$request->department_id)
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->office_shift_id) {
@@ -83,21 +83,21 @@ class EmployeeController extends Controller {
                                 ->where('company_id','=',$request->company_id)
                                 ->where('office_shift_id','=',$request->office_shift_id)
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id) {
                     $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->where('company_id','=',$request->company_id)
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }else {
                     $employees = Employee::with('user:id,profile_photo,username','company:id,company_name','department:id,department_name', 'designation:id,designation_name','officeShift:id,shift_name','status:id,status_title')
                                 ->orderBy('company_id')
                                 ->where('is_active',1)
-                                ->where('exit_date',NULL)
+                                
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }
@@ -463,7 +463,7 @@ class EmployeeController extends Controller {
 				if ($request->exit_date){
 					$data['exit_date'] = $request->exit_date;
 				}
-				if ($request->finish_contract) {
+				if ($request->finish_contract){
 					$data['finish_contract'] = $request->finish_contract;
 				}
                 // else {

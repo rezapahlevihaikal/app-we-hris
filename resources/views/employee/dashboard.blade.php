@@ -247,10 +247,10 @@
                                                                 data-live-search="true"
                                                                 data-live-search-style="contains"
                                                                 title="{{__('Selecting',['key'=>__('Marital Status')])}}...">
-                                                            <option value="single">{{trans('file.Single')}}</option>
-                                                            <option value="married">{{trans('file.Married')}}</option>
-                                                            <option value="widowed">{{trans('file.Widowed')}}</option>
-                                                            <option value="divorced">{{trans('file.Divorced/Separated')}}</option>
+                                                            <option value="Belum Kawin">{{trans('Belum Kawin')}}</option>
+                                                            <option value="Kawin">{{trans('Kawin')}}</option>
+                                                            <option value="Cerai Mati">{{trans('Cerai Mati')}}</option>
+                                                            <option value="Cerai Hidup">{{trans('Cerai Hidup')}}</option>
                                                         </select>
                                                     </div>
 
@@ -371,7 +371,7 @@
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
-                                                        <label>{{__('Finish Contract')}}</label>
+                                                        <label>{{__('Finish Contract (Jika Karyawan Kontrak)')}}</label>
                                                         <input type="text" name="finish_contract" id="exit_date"
                                                             class="form-control date"
                                                                value="{{$employee->finish_contract}}">
