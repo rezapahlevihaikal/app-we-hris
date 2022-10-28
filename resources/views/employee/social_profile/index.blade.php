@@ -15,8 +15,8 @@
                 </div>
 
                 <div class="col-md-6 form-group">
-                    <label>{{__('Skype Profile')}}</label>
-                    <input type="text" name="skype_id" id="skype_id" placeholder="{{__('Skype Profile')}}"
+                    <label>{{__('Instagram Username')}}</label>
+                    <input type="text" name="skype_id" id="skype_id" placeholder="{{__('Instagram Username')}}"
                             class="form-control" value="{{ $employee->skype_id }}">
                 </div>
 

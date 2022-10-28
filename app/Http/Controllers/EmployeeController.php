@@ -58,7 +58,7 @@ class EmployeeController extends Controller {
                                 ->where('office_shift_id','=',$request->office_shift_id)
 								->where('status_id','=',$request->status_id)
                                 ->where('is_active',1)
-                                
+// ->where('exit_date',NULL)                        
                                 ->orWhere('exit_date','0000-00-00')
                                 ->get();
                 }elseif ($request->company_id && $request->department_id && $request->designation_id) {
@@ -148,7 +148,7 @@ class EmployeeController extends Controller {
                     {
                         $email = "<i class='fa fa-envelope text-muted' title='Email'></i>&nbsp;".$row->email;
                         $contact_no = "<i class='text-muted fa fa-phone' title='Phone'></i>&nbsp;".$row->contact_no;
-                       // $skype_id = "<i class='text-muted fa fa-skype' title='Skype'></i>&nbsp;".$row->skype_id;
+                       	// $skype_id = "<i class='fab fa-instagram' tittle='ig'></i>&nbsp;".$row->skype_id;
                         $whatsapp_id = "<i class='text-muted fa fa-whatsapp' title='Whats App'></i>&nbsp;".$row->whatsapp_id;
 
                         return $email.'</br>'.$contact_no.'</br>'.$whatsapp_id.' </br>';
@@ -193,7 +193,7 @@ class EmployeeController extends Controller {
 			if (request()->ajax())
 			{
 				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'contact_no', 'date_of_birth', 'gender',
-					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date', 'finish_contract'),
+					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date', 'finish_contract','permanent_date'),
 					[
 						'first_name' => 'required',
 						'last_name' => 'required',
@@ -210,6 +210,7 @@ class EmployeeController extends Controller {
 						'attendance_type' => 'required',
 						'joining_date' => 'required',
 						'finish_contract' => 'required',
+						'permanent_date' => 'required',
 						'profile_photo' => 'nullable|image|max:10240|mimes:jpeg,png,jpg,gif',
 					]
 				);
@@ -235,6 +236,7 @@ class EmployeeController extends Controller {
 				$data['attendance_type'] = $request->attendance_type; //new
 				$data['joining_date']    = $request->joining_date; //new
 				$data['finish_contract'] = $request->finish_contract;
+				$data['permanent_date'] = $request->permanent_date;
 				$data['is_active'] = 1;
 
 
@@ -434,7 +436,8 @@ class EmployeeController extends Controller {
 						'total_leave' => 'numeric|min:0',
 						'joining_date' => 'required',
 						'exit_date' => 'nullable',
-						'finish_contract' => 'nullable'
+						'finish_contract' => 'nullable',
+						'permanent_date' => 'nullable'
 					]
 				);
 
@@ -465,6 +468,9 @@ class EmployeeController extends Controller {
 				}
 				if ($request->finish_contract){
 					$data['finish_contract'] = $request->finish_contract;
+				}
+				if ($request->permanent_date){
+					$data['permanent_date'] = $request->permanent_date;
 				}
                 // else {
                 //     $data['exit_date'] = NULL;

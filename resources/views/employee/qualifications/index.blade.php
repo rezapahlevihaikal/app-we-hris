@@ -74,6 +74,20 @@
                                        class="form-control date" value="">
                             </div>
 
+                            <div class="col-md-6 form-group">
+                                <label>{{trans('Majority')}} *</label>
+                                <input type="text" name="major" id="qualification_major"
+                                       placeholder={{trans('Teknik Nuklir')}}
+                                               required class="form-control">
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label>{{trans('GPA')}} *</label>
+                                <input type="text" name="gpa" id="qualification_gpa"
+                                       placeholder={{trans('3.00')}}
+                                               required class="form-control" value="">
+                            </div>
+
                             {{-- <div class="col-md-6 form-group">
                                 <label>{{trans('file.Language')}}</label>
                                 <select name="language_skill_id" id="language_skill_id" required
@@ -99,7 +113,7 @@
                             </div> --}}
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>{{trans('file.Description')}}</label>
                                     <textarea class="form-control" name="description" id="qualification_description"
@@ -144,4 +158,3 @@
     </div>
 
 </section>
-

@@ -64,13 +64,13 @@
                             </div>
 
                             <div class="col-md-6 form-group">
-                                <label>{{trans('file.Post')}} *</label>
+                                <label>{{trans('Last Position')}} *</label>
                                 <input type="text" name="post" id="work_post" placeholder={{trans('file.Post')}}
                                         required class="form-control">
                             </div>
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>{{trans('file.Description')}}</label>
                                     <textarea class="form-control" name="description" id="work_experience_description"

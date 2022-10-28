@@ -52,11 +52,13 @@ class EmployeeQualificationController extends Controller
 		$logged_user = auth()->user();
 		if ($logged_user->can('store-details-employee')||$logged_user->id==$employee)
 		{
-			$validator = Validator::make($request->only( 'institution_name','education_level_id','from_date','to_date',
+			$validator = Validator::make($request->only( 'institution_name','education_level_id','major','gpa','from_date','to_date',
 				'description','language_skill_id','general_skill_id'),
 				[
 					'institution_name' => 'required',
 					'education_level_id' => 'required',
+					'major' => 'required',
+					'gpa' => 'required',
 					'from_date' =>'required',
 					'to_date' =>'required',
 				]
@@ -80,6 +82,8 @@ class EmployeeQualificationController extends Controller
 
 			$data['institution_name'] =  $request->institution_name;
 			$data['employee_id'] = $employee;
+			$data['major'] = $request->major;
+			$data['gpa'] = $request->gpa;
 			$data['education_level_id'] = $request->education_level_id;
 			$data['language_skill_id'] = $request->language_skill_id;
 			$data ['general_skill_id'] = $request->general_skill_id;
@@ -112,11 +116,13 @@ class EmployeeQualificationController extends Controller
 		$logged_user = auth()->user();
 		if ($logged_user->can('modify-details-employee')||$logged_user->id==$id)
 		{
-			$validator = Validator::make($request->only( 'institution_name','education_level_id','from_date','to_date',
+			$validator = Validator::make($request->only( 'institution_name','education_level_id','major', 'gpa','from_date','to_date',
 				'description','language_skill_id','general_skill_id'),
 				[
 					'institution_name' => 'required',
 					'education_level_id' => 'required',
+					'major' => 'required',
+					'gpa' => 'required',
 					'from_date' =>'required',
 					'to_date' =>'required',
 				]
@@ -139,6 +145,8 @@ class EmployeeQualificationController extends Controller
 			$data = [];
 
 			$data['institution_name'] =  $request->institution_name;
+			$data['major'] = $request->major;
+			$data['gpa'] = $request->gpa;
 			$data['education_level_id'] = $request->education_level_id;
 			$data['language_skill_id'] = $request->language_skill_id;
 			$data ['general_skill_id'] = $request->general_skill_id;

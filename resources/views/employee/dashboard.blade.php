@@ -70,12 +70,12 @@
                                                role="tab" aria-controls="Basic"
                                                aria-selected="true">{{trans('file.Basic')}}</a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link" href="{{route('immigrations.show',$employee)}}"
                                                id="immigration-tab" data-toggle="tab" data-table="immigration"
                                                data-target="#Immigration" role="tab" aria-controls="Immigration"
                                                aria-selected="false">{{trans('file.Immigration')}}</a>
-                                        </li>
+                                        </li> --}}
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{route('contacts.show',$employee)}}"
                                                id="emergency-tab" data-toggle="tab" data-table="emergency"
@@ -371,12 +371,18 @@
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
-                                                        <label>{{__('Finish Contract (Jika Karyawan Kontrak)')}}</label>
-                                                        <input type="text" name="finish_contract" id="exit_date"
+                                                        <label>{{__('End Finish Contract (Kontrak)')}}</label>
+                                                        <input type="text" name="finish_contract" id="finish_contract"
                                                             class="form-control date"
                                                                value="{{$employee->finish_contract}}">
                                                     </div>
 
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{__('Permanent Date (Tetap)')}}</label>
+                                                        <input type="text" name="permanent_date" id="permanent_date"
+                                                            class="form-control date"
+                                                               value="{{$employee->permanent_date}}">
+                                                    </div>
 
                                                     <div class="col-md-4">
                                                         <label class="text-bold">{{__('Attendance Type')}} <span class="text-danger">*</span></label>
