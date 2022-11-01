@@ -172,6 +172,20 @@
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
+                                                        <label>{{trans('Nomor KTP')}} </label>
+                                                        <input type="text" name="no_ktp" id="no_ktp"
+                                                               placeholder="321XXXX"
+                                                               value="{{$employee->no_ktp}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('Nomor NPWP')}} </label>
+                                                        <input type="text" name="no_npwp" id="no_npwp"
+                                                               placeholder="0012XXX"
+                                                               value="{{$employee->no_npwp}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
                                                         <label>{{trans('file.Address')}} </label>
                                                         <input type="text" name="address" id="address"
                                                                placeholder="Address"
@@ -179,14 +193,42 @@
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
-                                                        <label>{{trans('file.City')}} </label>
+                                                        <label>{{trans('RT')}} </label>
+                                                        <input type="text" name="rt" id="rt"
+                                                               placeholder="005"
+                                                               value="{{$employee->rt}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('RW')}} </label>
+                                                        <input type="text" name="rw" id="rw"
+                                                               placeholder="003"
+                                                               value="{{$employee->rw}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('Kelurahan')}} </label>
+                                                        <input type="text" name="kelurahan" id="kelurahan"
+                                                               placeholder="Sukamakmur"
+                                                               value="{{$employee->kelurahan}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('Kecamatan')}} </label>
+                                                        <input type="text" name="kecamatan" id="kecamatan"
+                                                               placeholder="Atambua"
+                                                               value="{{$employee->kecamatan}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('Kota/Kabupaten')}} </label>
                                                         <input type="text" name="city" id="city"
-                                                               placeholder="{{trans('file.City')}}"
+                                                               placeholder="{{trans('Wamena')}}"
                                                                value="{{$employee->city}}" class="form-control">
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
-                                                        <label>{{trans('file.State/Province')}}
+                                                        <label>{{trans('Provinsi')}}
                                                         </label>
                                                         <input type="text" name="state" id="state"
                                                                placeholder="{{trans('file.State/Province')}}"
@@ -198,6 +240,26 @@
                                                         <input type="text" name="zip_code" id="zip_code"
                                                                placeholder="{{trans('file.ZIP')}}"
                                                                value="{{$employee->zip_code}}" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>{{trans('Agama')}} <span class="text-danger">*</span></label>
+                                                            <input type="hidden" name="religion_id_hidden"
+                                                               value="{{ $employee->religion_id }}"/>
+                                                            <select name="religion_id" id="religion_id"
+                                                                    class="form-control selectpicker dynamic"
+                                                                    data-live-search="true"
+                                                                    data-live-search-style="contains"
+                                                                    data-dependent="department_name"
+                                                                    data-shift_name="shift_name"
+                                                                    title="{{__('Selecting',['key'=>trans('Agama')])}}...">
+                                                                @foreach($religion as $item)
+                                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
                                                     </div>
 
 
@@ -214,6 +276,13 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('Tempat Lahir')}} </label>
+                                                        <input type="text" name="tempat_lahir" id="tempat_lahir"
+                                                               placeholder="Bekasi"
+                                                               value="{{$employee->tempat_lahir}}" class="form-control">
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
@@ -342,14 +411,14 @@
                                                     </div>
 
                                                     <div class="col-md-4 form-group">
-                                                        <label>{{trans('file.Office Shift')}} <span class="text-danger">*</span></label>
+                                                        <label>{{trans('Office Shift')}} <span class="text-danger">*</span></label>
                                                         <input type="hidden" name="office_shift_id_hidden"
                                                                value="{{ $employee->office_shift_id }}"/>
                                                         <select name="office_shift_id" id="office_shift_id"
                                                                 class="selectpicker form-control"
                                                                 data-live-search="true"
                                                                 data-live-search-style="contains"
-                                                                title="{{__('Selecting',['key'=>trans('file.Office Shift')])}}...">
+                                                                title="{{__('Selecting',['key'=>trans('Office Shift')])}}...">
                                                             @foreach($office_shifts as $office_shift)
                                                                 <option value="{{$office_shift->id}}">{{$office_shift->shift_name}}</option>
                                                             @endforeach
@@ -552,6 +621,7 @@
     $('#marital_status').selectpicker('val', $('input[name="marital_status_hidden"]').val());
 
     $('#company_id').selectpicker('val', $('input[name="company_id_hidden"]').val());
+    $('#religion_id').selectpicker('val', $('input[name="religion_id_hidden"]').val());
     $('#department_id').selectpicker('val', $('input[name="department_id_hidden"]').val());
     $('#designation_id').selectpicker('val', $('input[name="designation_id_hidden"]').val());
 

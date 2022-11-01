@@ -14,6 +14,7 @@ use App\QualificationEducationLevel;
 use App\QualificationLanguage;
 use App\QualificationSkill;
 use App\salary;
+use App\MasterReligion;
 use App\status;
 use App\User;
 
@@ -193,7 +194,7 @@ class EmployeeController extends Controller {
 			if (request()->ajax())
 			{
 				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'contact_no', 'date_of_birth', 'gender',
-					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date', 'finish_contract','permanent_date'),
+					'username', 'role_users_id', 'password', 'password_confirmation', 'company_id', 'department_id', 'designation_id','office_shift_id','attendance_type','joining_date', 'finish_contract','permanent_date',),
 					[
 						'first_name' => 'required',
 						'last_name' => 'required',
@@ -212,6 +213,13 @@ class EmployeeController extends Controller {
 						'finish_contract' => 'required',
 						'permanent_date' => 'required',
 						'profile_photo' => 'nullable|image|max:10240|mimes:jpeg,png,jpg,gif',
+						// 'no_ktp' => 'required',
+						// 'no_npwp' => 'required',
+						// 'rt' => 'required',
+						// 'rw' => 'required',
+						// 'kelurahan' => 'required',
+						// 'kecamatan' => 'required',
+						// 'tempat_lahir' => 'required'
 					]
 				);
 
@@ -236,6 +244,13 @@ class EmployeeController extends Controller {
 				$data['attendance_type'] = $request->attendance_type; //new
 				$data['joining_date']    = $request->joining_date; //new
 				$data['finish_contract'] = $request->finish_contract;
+				// $data['no_ktp'] = $request->no_ktp;
+				// $data['no_npwp'] = $request->no_npwp;
+				// $data['rt'] = $request->rt;
+				// $data['rw'] = $request->rw;
+				// $data['kelurahan'] = $request->kelurahan;
+				// $data['kecamatan'] = $request->kecamatan;
+				// $data['tempat_lahir'] = $request->tempat_lahir;
 				$data['permanent_date'] = $request->permanent_date;
 				$data['is_active'] = 1;
 
@@ -305,6 +320,9 @@ class EmployeeController extends Controller {
 				->where('company_id', $employee->company_id)
 				->get();
 
+			
+			$religion = MasterReligion::select('id', 'name')->get();
+
 			$designations = designation::select('id', 'designation_name')
 				->where('department_id', $employee->department_id)
 				->get();
@@ -326,7 +344,7 @@ class EmployeeController extends Controller {
 
 
 			return view('employee.dashboard', compact('employee', 'countries', 'companies',
-				'departments', 'designations', 'statuses', 'office_shifts', 'document_types', 'education_levels', 'language_skills', 'general_skills','roles'));
+				'departments', 'religion','designations', 'statuses', 'office_shifts', 'document_types', 'education_levels', 'language_skills', 'general_skills','roles'));
 		}else
 		{
 			return response()->json(['success' => __('You are not authorized')]);
@@ -421,7 +439,8 @@ class EmployeeController extends Controller {
 			{
 				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'contact_no', 'date_of_birth', 'gender',
 					'username', 'role_users_id', 'company_id', 'department_id', 'designation_id', 'office_shift_id', 'location_id', 'status_id',
-					'marital_status', 'joining_date', 'permission_role_id', 'address', 'city', 'state', 'country', 'zip_code','attendance_type','total_leave'
+					'marital_status', 'joining_date', 'permission_role_id', 'address', 'city', 'state', 'country', 'zip_code','attendance_type','total_leave',
+					'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir'
 				),
 					[
 						'first_name' => 'required',
@@ -437,7 +456,15 @@ class EmployeeController extends Controller {
 						'joining_date' => 'required',
 						'exit_date' => 'nullable',
 						'finish_contract' => 'nullable',
-						'permanent_date' => 'nullable'
+						'no_ktp' => 'required',
+						'no_npwp' => 'required',
+						'rt' => 'required',
+						'rw' => 'required',
+						'kelurahan' => 'required',
+						'kecamatan' => 'required',
+						'tempat_lahir' => 'required',
+						'religion_id' => 'required',
+						'permanent_date' => 'nullable',
 					]
 				);
 
@@ -472,6 +499,14 @@ class EmployeeController extends Controller {
 				if ($request->permanent_date){
 					$data['permanent_date'] = $request->permanent_date;
 				}
+				$data['no_ktp'] = $request->no_ktp;
+				$data['no_npwp'] = $request->no_npwp;
+				$data['rt'] = $request->rt;
+				$data['rw'] = $request->rw;
+				$data['kelurahan'] = $request->kelurahan;
+				$data['kecamatan'] = $request->kecamatan;
+				$data['tempat_lahir'] = $request->tempat_lahir;
+				$data['religion_id'] = $request->religion_id;
                 // else {
                 //     $data['exit_date'] = NULL;
                 // }

@@ -14,7 +14,9 @@ class Employee extends Model
 		'id','first_name','last_name','email','contact_no','date_of_birth','gender','status_id','office_shift_id','salary_id','location_id','designation_id', 'company_id', 'department_id','is_active',
 		'role_users_id','permission_role_id','joining_date','exit_date','finish_contract','permanent_date','marital_status','address','city','state','country','zip_code','cv','skype_id','fb_id',
 		'twitter_id','linkedIn_id','blogger_id','basic_salary','payslip_type','leave_id','attendance_id','performance_id','award_id','transfer_id','resignation_id',
-		'travel_id','promotion_id','complain_id','warning_id','termination_id','attendance_type','total_leave','remaining_leave','pension_type','pension_amount'];
+		'travel_id','promotion_id','complain_id','warning_id','termination_id','attendance_type','total_leave','remaining_leave','pension_type','pension_amount',
+		'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir'
+	];
 
 	public function getFullNameAttribute() {
 		return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
@@ -34,6 +36,11 @@ class Employee extends Model
 
 	public function company(){
 		return $this->hasOne('App\company','id','company_id');
+	}
+
+	public function religion()
+	{
+		return $this->hasOne('App\MasterReligion', 'id', 'religion_id');
 	}
 
 	public function designation(){
