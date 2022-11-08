@@ -331,6 +331,10 @@
                                 <li id="user-import"><a href="{{route('employees.import')}}">{{__('Import Employees')}}</a>
                                 </li>
                             @endcan
+                            @can('history-employee')
+                                <li id="user-import"><a href="{{route('employees.history')}}">{{__('History Employees')}}</a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                 @endcan

@@ -109,6 +109,9 @@ Route::group(['middleware' => ['XSS']], function ()
 			Route::post('employees/{employee}/infoUpdate', 'EmployeeController@infoUpdate')->name('employees_basicInfo.update');
 		}
 		{
+			Route::get('employees/history', 'HistoryEmployeeController@index')->name('employees.history');
+		}
+		{
 			Route::get('immigrations', 'EmployeeImmigrationController@index')->name('immigrations.index');
 			Route::get('immigrations/{id}/edit', 'EmployeeImmigrationController@edit')->name('immigrations.edit');
 			Route::get('immigrations/{employee}', 'EmployeeImmigrationController@show')->name('immigrations.show');

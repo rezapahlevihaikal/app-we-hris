@@ -211,7 +211,7 @@ class EmployeeController extends Controller {
 						'attendance_type' => 'required',
 						'joining_date' => 'required',
 						'finish_contract' => 'required',
-						'permanent_date' => 'required',
+						// 'permanent_date' => 'required',
 						'profile_photo' => 'nullable|image|max:10240|mimes:jpeg,png,jpg,gif',
 						// 'no_ktp' => 'required',
 						// 'no_npwp' => 'required',
@@ -251,7 +251,7 @@ class EmployeeController extends Controller {
 				// $data['kelurahan'] = $request->kelurahan;
 				// $data['kecamatan'] = $request->kecamatan;
 				// $data['tempat_lahir'] = $request->tempat_lahir;
-				$data['permanent_date'] = $request->permanent_date;
+				// $data['permanent_date'] = $request->permanent_date;
 				$data['is_active'] = 1;
 
 
