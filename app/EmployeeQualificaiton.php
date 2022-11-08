@@ -16,13 +16,7 @@ class EmployeeQualificaiton extends Model
 	public function EducationLevel(){
 		return $this->hasOne('App\QualificationEducationLevel','id','education_level_id');
 	}
-	public function LanguageSkill(){
-		return $this->hasOne('App\QualificationLanguage','id','language_skill_id');
-	}
-	public function GeneralSkill(){
-		return $this->hasOne('App\QualificationSkill','id','general_skill_id');
-	}
-
+	
 	public function setFromYearAttribute($value)
 	{
 		$this->attributes['from_year'] = Carbon::createFromFormat(env('Date_Format'), $value)->format('Y-m-d');

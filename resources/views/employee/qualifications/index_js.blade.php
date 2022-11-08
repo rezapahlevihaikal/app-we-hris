@@ -50,7 +50,7 @@
             {
                 data: null,
                 render: function (data, type, row) {
-    return row.from_year +' to ' + row.to_year;
+                 return row.from_year +' to ' + row.to_year;
                 }
             },
             {
@@ -190,9 +190,9 @@
                 $('#qualification_to_date').val(html.data.to_year);
                 $('#qualification_description').val(html.data.description);
                 $('#education_level_id').selectpicker('val', html.data.education_level_id);
-                $('#language_skill_id').selectpicker('val', html.data.language_skill_id);
-                $('#general_skill_id').selectpicker('val', html.data.general_skill_id);
-
+                $('#qualification_major').val(html.data.major);
+                $('#qualification_gpa').val(html.data.gpa);
+               
 
 
                 $('#qualification_hidden_id').val(html.data.id);
