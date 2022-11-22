@@ -53,7 +53,7 @@ class EmployeeQualificationController extends Controller
 		if ($logged_user->can('store-details-employee')||$logged_user->id==$employee)
 		{
 			$validator = Validator::make($request->only( 'institution_name','education_level_id','major','gpa','from_date','to_date',
-				'description','language_skill_id','general_skill_id'),
+				'description'),
 				[
 					'institution_name' => 'required',
 					'education_level_id' => 'required',
@@ -85,8 +85,7 @@ class EmployeeQualificationController extends Controller
 			$data['major'] = $request->major;
 			$data['gpa'] = $request->gpa;
 			$data['education_level_id'] = $request->education_level_id;
-			$data['language_skill_id'] = $request->language_skill_id;
-			$data ['general_skill_id'] = $request->general_skill_id;
+			
 			$data ['from_year'] = $request->from_date;
 			$data ['to_year'] = $request->to_date;
 			$data ['description'] = $request->description;
@@ -117,7 +116,7 @@ class EmployeeQualificationController extends Controller
 		if ($logged_user->can('modify-details-employee')||$logged_user->id==$id)
 		{
 			$validator = Validator::make($request->only( 'institution_name','education_level_id','major', 'gpa','from_date','to_date',
-				'description','language_skill_id','general_skill_id'),
+				'description'),
 				[
 					'institution_name' => 'required',
 					'education_level_id' => 'required',
@@ -148,8 +147,7 @@ class EmployeeQualificationController extends Controller
 			$data['major'] = $request->major;
 			$data['gpa'] = $request->gpa;
 			$data['education_level_id'] = $request->education_level_id;
-			$data['language_skill_id'] = $request->language_skill_id;
-			$data ['general_skill_id'] = $request->general_skill_id;
+			
 			$data ['from_year'] = $request->from_date;
 			$data ['to_year'] = $request->to_date;
 			$data ['description'] = $request->description;
