@@ -437,7 +437,7 @@ class EmployeeController extends Controller {
 		{
 			if (request()->ajax())
 			{
-				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'contact_no', 'date_of_birth', 'gender',
+				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'id_employee' , 'contact_no', 'date_of_birth', 'gender',
 					'username', 'role_users_id', 'company_id', 'department_id', 'designation_id', 'office_shift_id', 'location_id', 'status_id',
 					'marital_status', 'joining_date', 'permission_role_id', 'address', 'city', 'state', 'country', 'zip_code','attendance_type','total_leave',
 					'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir'
@@ -446,6 +446,7 @@ class EmployeeController extends Controller {
 						'first_name' => 'required',
 						'last_name' => 'required',
 						'email' => 'required|email|unique:users,email,' . $employee,
+						// 'id_employee' => 'required',
 						'contact_no' => 'required|numeric|unique:users,contact_no,' . $employee,
 						'date_of_birth' => 'required',
 						'username' => 'required|unique:users,username,' . $employee,
@@ -457,11 +458,11 @@ class EmployeeController extends Controller {
 						'exit_date' => 'nullable',
 						'finish_contract' => 'nullable',
 						'no_ktp' => 'required',
-						'no_npwp' => 'required',
-						'rt' => 'required',
-						'rw' => 'required',
-						'kelurahan' => 'required',
-						'kecamatan' => 'required',
+						// 'no_npwp' => 'required',
+						// 'rt' => 'required',
+						// 'rw' => 'required',
+						// 'kelurahan' => 'required',
+						// 'kecamatan' => 'required',
 						'tempat_lahir' => 'required',
 						'religion_id' => 'required',
 						'permanent_date' => 'nullable',
@@ -477,6 +478,7 @@ class EmployeeController extends Controller {
 				$data = [];
 				$data['first_name'] = $request->first_name;
 				$data['last_name'] = $request->last_name;
+				$data['id_employee'] = $request->id_employee;
 				$data['date_of_birth'] = $request->date_of_birth;
 				$data['gender'] = $request->gender;
 				$data['department_id'] = $request->department_id;
