@@ -446,7 +446,7 @@ class EmployeeController extends Controller {
 						'first_name' => 'required',
 						'last_name' => 'required',
 						'email' => 'required|email|unique:users,email,' . $employee,
-						// 'id_employee' => 'required',
+						'id_employee' => 'required',
 						'contact_no' => 'required|numeric|unique:users,contact_no,' . $employee,
 						'date_of_birth' => 'required',
 						'username' => 'required|unique:users,username,' . $employee,
@@ -481,6 +481,7 @@ class EmployeeController extends Controller {
 				$data['id_employee'] = $request->id_employee;
 				$data['date_of_birth'] = $request->date_of_birth;
 				$data['gender'] = $request->gender;
+				$data['id_employee'] = $request->id_employee;
 				$data['department_id'] = $request->department_id;
 				$data['company_id'] = $request->company_id;
 				$data ['designation_id'] = $request->designation_id;

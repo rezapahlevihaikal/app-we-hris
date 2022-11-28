@@ -163,13 +163,13 @@
                                                                value="{{ $employee->email }}">
                                                     </div>
 
-                                                    {{-- <div class="col-md-4 form-group">
-                                                        <label>{{trans('ID Karyawan')}}</label>
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{trans('ID Karyawan')}} <span class="text-danger">*</span></label>
                                                         <input type="text" name="id_employee" id="id_employee"
                                                                placeholder="WE-181101"
                                                                required class="form-control"
                                                                value="{{ $employee->id_employee }}">
-                                                    </div> --}}
+                                                    </div>
 
                                                     <div class="col-md-4 form-group">
                                                         <label>{{trans('file.Phone')}}</label>
