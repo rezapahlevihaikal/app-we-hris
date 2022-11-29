@@ -120,6 +120,7 @@ class EmployeeController extends Controller {
                             $profile_photo = '<img src="'. $url .'" class="profile-photo md" style="height:35px;width:35px"/>';
                         }
                         $name  = '<span><a href="employees/' . $row->id .'" class="d-block text-bold" style="color:#24ABF2">'.$row->full_name.'</a></span>';
+						
                         $username = "<span>Username: &nbsp;".($row->user->username ?? '')."</span>";
                         $gender= "<span>Gender: &nbsp;".($row->gender ?? '')."</span>";  
                         $stt = "<span>Status: &nbsp;".($row->status->status_title ?? '')."</span>"; 
@@ -142,8 +143,8 @@ class EmployeeController extends Controller {
                         $company     = "<span class='text-bold'>".strtoupper($row->company->company_name ?? '')."</span>";
                         $department  = "<span>Department : ".($row->department->department_name ?? '')."</span>";
                         $designation = "<span>Designation : ".($row->designation->designation_name ?? '')."</span>";
-
-                        return $company.'</br>'.$department.'</br>'.$designation;
+						$id_employee = "<span>ID : &nbsp;".($row->id_employee ?? '')."</span>";
+                        return $company.'</br>'.$department.'</br>'.$designation.'</br>'.$id_employee;
                     })
                     ->addColumn('contacts', function ($row)
                     {
