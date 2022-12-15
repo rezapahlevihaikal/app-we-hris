@@ -480,9 +480,13 @@
                                                         <small class="text-danger"><i>(Read Only)</i></small>
                                                     </div>
 
-
+                                                    <div class="col-md-4 form-group">
+                                                        <label>{{__('Note')}}</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
+                                                        {{-- <small class="text-danger"><i>(Read Only)</i></small> --}}
+                                                    </div>
                                                     {{-- <div class="col-md-4"></div> --}}
-                                                    <div class="col-md-4"></div>
+                                                    {{-- <div class="col-md-4"></div> --}}
 
                                                     <div class="mt-3 form-group row">
                                                         <div class="form-group row mb-0">

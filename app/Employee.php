@@ -15,7 +15,7 @@ class Employee extends Model
 		'role_users_id','permission_role_id','joining_date','exit_date','finish_contract','permanent_date','marital_status','address','city','state','country','zip_code','cv','skype_id','fb_id',
 		'twitter_id','id_employee','linkedIn_id','blogger_id','basic_salary','payslip_type','leave_id','attendance_id','performance_id','award_id','transfer_id','resignation_id',
 		'travel_id','promotion_id','complain_id','warning_id','termination_id','attendance_type','total_leave','remaining_leave','pension_type','pension_amount',
-		'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir'
+		'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir', 'note'
 	];
 
 	public function getFullNameAttribute() {

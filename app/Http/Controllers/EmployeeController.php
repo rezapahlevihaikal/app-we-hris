@@ -441,7 +441,7 @@ class EmployeeController extends Controller {
 				$validator = Validator::make($request->only('first_name', 'last_name', 'email', 'id_employee' , 'contact_no', 'date_of_birth', 'gender',
 					'username', 'role_users_id', 'company_id', 'department_id', 'designation_id', 'office_shift_id', 'location_id', 'status_id',
 					'marital_status', 'joining_date', 'permission_role_id', 'address', 'city', 'state', 'country', 'zip_code','attendance_type','total_leave',
-					'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir'
+					'religion_id', 'no_ktp', 'no_npwp', 'rt', 'rw', 'kelurahan', 'kecamatan', 'tempat_lahir','note'
 				),
 					[
 						'first_name' => 'required',
@@ -527,6 +527,7 @@ class EmployeeController extends Controller {
 				$data['contact_no'] = $request->contact_no;
 				$data['attendance_type'] = $request->attendance_type;
 				$data['is_active'] = 1;
+				$data['note'] = $request->note;
 
 				//Leave Calculation
 				$employee_leave_info = Employee::find($employee);
